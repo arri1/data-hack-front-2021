@@ -14,9 +14,6 @@ const SideMenu = () => {
         localStorage.setItem('logged',false)
         history.replace('/login')
     }
-
-    console.log(location)
-
     return (
         <Container>
             <Menu

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import SideMenu from '../components/sideMenu'
 import {Route, Switch} from 'react-router-dom'
+import SideMenu from '../components/sideMenu'
 import TablePage from '../pages/tablePage'
 import Statistic from '../pages/statistic'
 
