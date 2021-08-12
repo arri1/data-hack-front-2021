@@ -29,14 +29,16 @@ const SideMenu = () => {
                 >
                     Таблица
                 </Menu.Item>
-                <Popconfirm>
+                <Popconfirm
+                    title="Уверены?"
+                    onConfirm={onExit}
+                >
                     <Menu.Item
                         key={3}
                     >
                         Выход
                     </Menu.Item>
                 </Popconfirm>
-
             </Menu>
         </Container>
     )

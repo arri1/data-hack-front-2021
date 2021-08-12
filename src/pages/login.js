@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Button, Form, Input} from 'antd'
+import {Button, Form, Input,message} from 'antd'
 import {useHistory} from 'react-router-dom'
 
 const Container = styled.div`
@@ -30,8 +30,9 @@ const Login = ({setLogged}) => {
             localStorage.setItem('logged',true)
             setLogged(true)
             history.replace('/')
-
+            return null
         }
+        message.error('Ввели не правильный пароль или логин')
     }
 
     return (
