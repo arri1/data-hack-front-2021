@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
 import Login from './pages/login'
-import Main from './pages/main'
+import Main from './containers/main'
 
 const Container = styled.div`
   display: flex;
@@ -12,12 +12,16 @@ const Container = styled.div`
 `
 
 const App = () => {
-    const [logged, setLogged] = useState(false)
+    const [logged, setLogged] = useState(undefined)
 
     useEffect(() => {
         const key = localStorage.getItem('logged')
-        setLogged(key)
+
+        setLogged(!!key)
     }, [])
+
+    if (logged===undefined)
+        return null
 
     return (
         <BrowserRouter>
@@ -44,7 +48,6 @@ const App = () => {
                     }
 
                     <Route
-                        exact
                         path={'/'}
                         component={Main}
                     />
