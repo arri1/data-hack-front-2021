@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {Menu, Popconfirm} from 'antd'
-import {useHistory} from 'react-router-dom'
+import {useHistory,useLocation} from 'react-router-dom'
 
 const Container = styled.div`
   display: flex;
@@ -9,25 +9,35 @@ const Container = styled.div`
 
 const SideMenu = () => {
     const history=useHistory()
+    const location = useLocation()
     const onExit = ()=>{
         localStorage.setItem('logged',false)
         history.replace('/login')
     }
 
+    console.log(location)
+
     return (
         <Container>
             <Menu
                 theme="dark"
+                defaultSelectedKeys={[location.pathname]}
             >
                 <Menu.Item
-                    key={1}
+                    key={'/'}
+                    onClick={()=>{
+                        history.push('/')
+                    }}
                 >
-                    Дашбоард
+                    Главная
                 </Menu.Item>
                 <Menu.Item
-                    key={2}
+                    key={'/statistic'}
+                    onClick={()=>{
+                        history.push('/statistic')
+                    }}
                 >
-                    Таблица
+                    Статистика
                 </Menu.Item>
                 <Popconfirm
                     title="Уверены?"

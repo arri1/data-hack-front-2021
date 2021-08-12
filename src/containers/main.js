@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import SideMenu from '../components/sideMenu'
 import {Route, Switch} from 'react-router-dom'
 import TablePage from '../pages/tablePage'
+import Statistic from '../pages/statistic'
 
 const Container = styled.div`
   display: flex;
@@ -17,6 +18,10 @@ const Main = () => {
                     exact
                     path={'/'}
                     component={TablePage}
+                />
+                <Route
+                    path={'/statistic'}
+                    component={Statistic}
                 />
             </Switch>
         </Container>
