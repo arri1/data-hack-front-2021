@@ -1,34 +1,57 @@
+import 'antd/dist/antd.css'
+import {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
 import Login from './pages/login'
 import Main from './pages/main'
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  flex-direction: column;
   height: 100%;
 `
 
 const App = () => {
+    const [logged, setLogged] = useState(false)
+
+    useEffect(() => {
+        const key = localStorage.getItem('logged')
+        setLogged(key)
+    }, [])
+
     return (
-        <Container>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Container>
                 <Switch>
                     <Route
                         exact
                         path={'/login'}
-                        component={Login}
+                        component={
+                            (props) => {
+                                return (
+                                    <Login {...props} setLogged={setLogged}/>
+                                )
+                            }
+                        }
                     />
+                    {
+                        !logged ?
+                            <Redirect
+                                to={'/login'}
+                            />
+                            :
+                            null
+                    }
+
                     <Route
                         exact
                         path={'/'}
                         component={Main}
                     />
                 </Switch>
-            </BrowserRouter>
-        </Container>
+            </Container>
+
+        </BrowserRouter>
     );
 }
 

@@ -1,8 +1,17 @@
+import styled from 'styled-components'
+import SideMenu from '../components/sideMenu'
+
+const Container = styled.div`
+  display: flex;
+  flex:1;
+`
+
 const Main = ()=>{
     return(
-        <div>
-            main
-        </div>
+        <Container>
+            <SideMenu/>
+            <div></div>
+        </Container>
     )
 }
 
